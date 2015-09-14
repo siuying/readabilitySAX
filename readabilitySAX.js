@@ -438,10 +438,6 @@ Readability.prototype.onclosetag = function(tagName){
 	if(this._settings.searchFurtherPages && tagName === "a"){
 		this._scanLink(elem);
 	}
-	else if (tagName === "meta" && elem.attributes["property"] === "og:title"){
-		this._metaTitle = elem.attributes["content"];
-		return;
-	}
 	else if(tagName === "title" && !this._origTitle){
 		this._origTitle = elem.toString().trim().replace(re_whitespace, " ");
 		return;
@@ -621,7 +617,6 @@ Readability.prototype.setSkipLevel = function(skipLevel){
 };
 
 Readability.prototype.getTitle = function(){
-	if(this._metaTitle) return this._metaTitle;
 	if(this._headerTitle) return this._headerTitle;
 	if(!this._origTitle) return "";
 
