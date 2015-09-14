@@ -418,7 +418,7 @@ Readability.prototype.onattribute = function(name, value){
 		}
 	}
 	else if(this._settings.cleanAttributes){
-		if (name in goodAttributes && elem.name !== "meta") elem.attributes[name] = value;
+		if(name in goodAttributes) elem.attributes[name] = value;
 	}
 	else elem.attributes[name] = value;
 };
