@@ -440,8 +440,9 @@ Readability.prototype.onclosetag = function(tagName){
 	}
 	else if (tagName === "meta" && elem.attributes["property"] === "og:title"){
 		this._metaTitle = elem.attributes["content"];
+		return;
 	}
-	else if(tagName === "title"){
+	else if(tagName === "title" && !this._origTitle){
 		this._origTitle = elem.toString().trim().replace(re_whitespace, " ");
 		return;
 	}
